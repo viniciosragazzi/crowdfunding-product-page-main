@@ -19,9 +19,24 @@ html {
 
 body {
   font-family: "Commissioner", sans-serif;
+  position: relative;
+  display: grid;
 }
 body .subtitle {
   color: var(--Dark_gray);
+}
+body button {
+  border: none;
+  padding: 1.4rem 3rem;
+  border-radius: 2rem;
+  background-color: var(--Moderate_cyan);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.5s ease background;
+}
+body button:hover {
+  background-color: var(--Dark_cyan);
 }
 body header {
   width: 100%;
@@ -72,19 +87,6 @@ body main {
   position: relative;
   background: rgb(255, 255, 255);
 }
-body main button {
-  border: none;
-  padding: 1.4rem 3rem;
-  border-radius: 2rem;
-  background-color: var(--Moderate_cyan);
-  color: white;
-  font-weight: 500;
-  cursor: pointer;
-  transition: 0.5s ease background;
-}
-body main button:hover {
-  background-color: var(--Dark_cyan);
-}
 body main .container {
   width: 90vw;
   display: grid;
@@ -133,6 +135,9 @@ body main .container .title-project-area .title-project-footer .bookmark {
 }
 body main .container .title-project-area .title-project-footer .bookmark svg {
   z-index: 5;
+}
+body main .container .title-project-area .title-project-footer .bookmark.bookmarked {
+  transition: 0.4s ease;
 }
 body main .container .title-project-area .title-project-footer .bookmark.bookmarked svg {
   z-index: 5;
@@ -272,9 +277,167 @@ body main .container .about-project-area .card-about .footer-card h4 span {
   font-size: 1.4rem;
   color: var(--Dark_gray);
 }
+body.open-modal section.modalList {
+  display: block;
+}
+body.open-modal header, body.open-modal main {
+  filter: brightness(0.5);
+}
+body section.modals {
+  position: absolute;
+  z-index: 999;
+  background-color: rgb(255, 255, 255);
+  top: 6vh;
+  border-radius: 1rem;
+  justify-self: center;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 2rem 2.5rem;
+}
+body section.modalList {
+  width: 360px;
+  min-height: 460px;
+  display: none;
+}
+body section.modalList .container {
+  padding-bottom: 2rem;
+}
+body section.modalList .container .header-modal-list {
+  display: grid;
+  gap: 1.4rem;
+  position: relative;
+  padding: 2rem 0;
+}
+body section.modalList .container .header-modal-list h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+body section.modalList .container .header-modal-list .close-modal {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
+body section.modalList .container .cards-modal-list {
+  display: grid;
+  gap: 1rem;
+}
+body section.modalList .container .cards-modal-list .card-modal {
+  border: 1.6px solid var(--GrayBar);
+  padding: 1rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  height: 10rem;
+  transition: 0.4s ease height;
+  cursor: pointer;
+}
+body section.modalList .container .cards-modal-list .card-modal.card-modal-open {
+  height: 19rem;
+}
+body section.modalList .container .cards-modal-list .card-modal.card-modal-open .check-circle {
+  position: relative;
+}
+body section.modalList .container .cards-modal-list .card-modal.card-modal-open .check-circle::after {
+  content: "";
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  left: 50%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-48%);
+  background-color: var(--Moderate_cyan);
+  border-radius: 50%;
+}
+body section.modalList .container .cards-modal-list .card-modal.card-modal-open .footer-card-modal {
+  border-top: 1px solid var(--GrayBar);
+}
+body section.modalList .container .cards-modal-list .card-modal .container {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+}
+body section.modalList .container .cards-modal-list .card-modal .container h2 {
+  font-size: 1rem;
+  color: var(--Moderate_cyan);
+}
+body section.modalList .container .cards-modal-list .card-modal .container .header-card-modal {
+  display: flex;
+  justify-content: space-between;
+}
+body section.modalList .container .cards-modal-list .card-modal .container .header-card-modal .header-card-modal-left {
+  display: flex;
+  gap: 2rem;
+}
+body section.modalList .container .cards-modal-list .card-modal .container .header-card-modal .header-card-modal-left .check-circle {
+  width: 1.8rem;
+  height: 1.8rem;
+  border: var(--Moderate_cyan) 1px solid;
+  border-radius: 50%;
+}
+body section.modalList .container .cards-modal-list .card-modal .container .header-card-modal .header-card-modal-left .left-box {
+  display: flex;
+  gap: 1rem;
+}
+body section.modalList .container .cards-modal-list .card-modal .container .header-card-modal .header-card-modal-right h2 {
+  color: var(--Black);
+  font-size: 1.1rem;
+}
+body section.modalList .container .cards-modal-list .card-modal .container .header-card-modal .header-card-modal-right h2 span {
+  font-size: 1rem;
+  padding-left: 0.2rem;
+  color: var(--Dark_gray);
+}
+body section.modalList .container .cards-modal-list .card-modal .container p {
+  padding-left: 3rem;
+  padding-bottom: 1rem;
+}
+body section.modalList .container .cards-modal-list .card-modal .footer-card-modal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+body section.modalList .container .cards-modal-list .card-modal .footer-card-modal .footer-card-modal-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+body section.modalList .container .cards-modal-list .card-modal .footer-card-modal .footer-card-modal-right input {
+  width: 6rem;
+  height: 3rem;
+  font-size: 1rem;
+  border-radius: 2rem;
+  border: 1px solid var(--Border_gray);
+  outline: none;
+  box-shadow: none;
+  position: relative;
+  padding-left: 1.6rem;
+}
+body section.modalList .container .cards-modal-list .card-modal .footer-card-modal .footer-card-modal-right input[type=number]::-webkit-outer-spin-button,
+body section.modalList .container .cards-modal-list .card-modal .footer-card-modal .footer-card-modal-right input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+body section.modalList .container .cards-modal-list .card-modal .footer-card-modal .footer-card-modal-right input[type=number] {
+  -moz-appearance: textfield;
+}
+body section.modalList .container .cards-modal-list .card-modal .footer-card-modal .footer-card-modal-right span {
+  position: absolute;
+  left: 0.8rem;
+  color: var(--Dark_gray);
+  font-weight: 700;
+}
+body section.modalList .container .cards-modal-list .card-modal .footer-card-modal .footer-card-modal-right button {
+  width: 6rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+}
 
 @media (max-width: 819px) {
-  body.activeUl main, body.activeUl .logo {
+  body.activeUl main,
+body.activeUl .logo {
     transition: 0.4s filter;
     filter: brightness(0.5);
   }
@@ -291,7 +454,7 @@ body main .container .about-project-area .card-about .footer-card h4 span {
     top: 4.5rem;
     border-radius: 1rem;
     display: block;
-    z-index: 999;
+    z-index: 998;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   }
   body.activeUl nav ul li {
@@ -300,6 +463,10 @@ body main .container .about-project-area .card-about .footer-card h4 span {
   body.activeUl nav ul li.center-item-menu {
     border-top: 1px solid var(--Border_gray);
     border-bottom: 1px solid var(--Border_gray);
+  }
+
+  body section.modalList .container .cards-modal-list .card-modal {
+    height: 11.5rem;
   }
 }
 @media (min-width: 820px) {
@@ -368,6 +535,25 @@ body main .container .about-project-area .card-about .footer-card h4 span {
 
   body main .container .about-project-area .card-about {
     min-height: 225px;
+  }
+
+  body main .container .about-project-area .card-about .header-card {
+    display: flex;
+    gap: 0.8rem;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  body section.modals {
+    position: fixed;
+  }
+
+  body section.modalList {
+    width: 460px;
+  }
+
+  body section.modalList .container .cards-modal-list .card-modal.card-modal-open {
+    height: 16rem;
   }
 }
 @media (min-width: 425px) {
