@@ -23,12 +23,6 @@ body {
 body .subtitle {
   color: var(--Dark_gray);
 }
-body.activeUl {
-  filter: brightness();
-}
-body.activeUl nav ul {
-  display: block;
-}
 body header {
   width: 100%;
   height: 40vh;
@@ -45,27 +39,32 @@ body header nav {
   align-items: center;
   position: relative;
 }
-body header nav ul {
-  width: 100%;
-  background-color: white;
-  position: absolute;
-  list-style-type: none;
-  top: 4.5rem;
-  border-radius: 1rem;
+body header nav .menu-btn {
+  display: block;
+  cursor: pointer;
+}
+body header nav .menu-btn .icon-close {
   display: none;
 }
+body header nav .menu-btn .hamburguer-btn {
+  display: block;
+}
+body header nav ul {
+  display: none;
+  list-style-type: none;
+}
 body header nav ul li {
-  padding: 1.7rem 1.5rem;
   font-size: 1.4rem;
   font-weight: 700;
+  cursor: pointer;
 }
-body header nav ul li.center-item-menu {
-  border-top: 1px solid var(--Border_gray);
-  border-bottom: 1px solid var(--Border_gray);
+body header nav ul li:hover a {
+  color: var(--Moderate_cyan);
 }
 body header nav ul li a {
   color: var(--Black);
   text-decoration: none;
+  transition: 0.2s ease color;
 }
 body main {
   width: 100%;
@@ -80,6 +79,11 @@ body main button {
   background-color: var(--Moderate_cyan);
   color: white;
   font-weight: 500;
+  cursor: pointer;
+  transition: 0.5s ease background;
+}
+body main button:hover {
+  background-color: var(--Dark_cyan);
 }
 body main .container {
   width: 90vw;
@@ -125,9 +129,26 @@ body main .container .title-project-area .title-project-footer .bookmark {
   display: flex;
   align-items: center;
   position: relative;
+  cursor: pointer;
 }
-body main .container .title-project-area .title-project-footer .bookmark img {
+body main .container .title-project-area .title-project-footer .bookmark svg {
   z-index: 5;
+}
+body main .container .title-project-area .title-project-footer .bookmark.bookmarked svg {
+  z-index: 5;
+}
+body main .container .title-project-area .title-project-footer .bookmark.bookmarked svg circle {
+  fill: var(--Dark_cyan);
+}
+body main .container .title-project-area .title-project-footer .bookmark.bookmarked svg path {
+  fill: white;
+}
+body main .container .title-project-area .title-project-footer .bookmark.bookmarked .bookmark-text {
+  color: var(--Dark_cyan);
+  background-color: #f4f8f9;
+}
+body main .container .title-project-area .title-project-footer .bookmark.bookmarked .bookmark-text::after {
+  content: "Bookmarked";
 }
 body main .container .title-project-area .title-project-footer .bookmark .bookmark-text {
   padding: 1rem 3rem;
@@ -139,6 +160,10 @@ body main .container .title-project-area .title-project-footer .bookmark .bookma
   z-index: 1;
   position: relative;
   left: -1.8rem;
+  font-weight: 700;
+}
+body main .container .title-project-area .title-project-footer .bookmark .bookmark-text::after {
+  content: "Bookmark";
 }
 body main .container .values-project-area {
   text-align: center;
@@ -221,6 +246,10 @@ body main .container .about-project-area .card-about.disabled {
   opacity: 0.6;
   filter: brightness(0.8);
 }
+body main .container .about-project-area .card-about.disabled button {
+  cursor: auto;
+  background-color: var(--Dark_gray);
+}
 body main .container .about-project-area .card-about .header-card {
   display: grid;
   gap: 0.8rem;
@@ -244,9 +273,38 @@ body main .container .about-project-area .card-about .footer-card h4 span {
   color: var(--Dark_gray);
 }
 
-@media (min-width: 769px) {
+@media (max-width: 819px) {
+  body.activeUl main, body.activeUl .logo {
+    transition: 0.4s filter;
+    filter: brightness(0.5);
+  }
+  body.activeUl nav .menu-btn .icon-close {
+    display: block;
+  }
+  body.activeUl nav .menu-btn .hamburguer-btn {
+    display: none;
+  }
+  body.activeUl nav ul {
+    width: 100%;
+    background-color: white;
+    position: absolute;
+    top: 4.5rem;
+    border-radius: 1rem;
+    display: block;
+    z-index: 999;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  }
+  body.activeUl nav ul li {
+    padding: 2rem 1.5rem;
+  }
+  body.activeUl nav ul li.center-item-menu {
+    border-top: 1px solid var(--Border_gray);
+    border-bottom: 1px solid var(--Border_gray);
+  }
+}
+@media (min-width: 820px) {
   html {
-    font-size: 80%;
+    font-size: 60%;
   }
 
   body main .container {
@@ -261,23 +319,55 @@ body main .container .about-project-area .card-about .footer-card h4 span {
     background-image: url(../images/image-hero-desktop.jpg);
   }
 
+  body header nav {
+    padding: 2rem 6rem;
+  }
+
+  body header nav .menu-btn {
+    display: none;
+  }
+
+  body header nav ul {
+    display: block;
+    display: flex;
+    gap: 2rem;
+  }
+  body header nav ul li {
+    cursor: auto;
+  }
+  body header nav ul li a {
+    color: white;
+  }
+
   body main .container .title-project-area .title-project-footer .bookmark .bookmark-text {
     display: flex;
   }
 
   body main .container .values-project-area ul {
     display: flex;
+    justify-self: left;
+  }
+  body main .container .values-project-area ul:last-child {
+    margin-left: 5rem;
   }
 
   body main .container .values-project-area ul .diviser {
     width: 1px;
+    margin-left: 5rem;
     height: 50%;
+  }
+  body main .container .values-project-area ul .diviser.firt {
+    margin-left: 1rem;
   }
 
   .footer-card {
     width: 100%;
     justify-content: space-between;
     flex-direction: row !important;
+  }
+
+  body main .container .about-project-area .card-about {
+    min-height: 225px;
   }
 }
 @media (min-width: 425px) {

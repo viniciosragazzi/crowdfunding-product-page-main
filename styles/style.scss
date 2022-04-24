@@ -21,14 +21,7 @@ body {
   .subtitle {
     color: var(--Dark_gray);
   }
-  &.activeUl {
-    filter: brightness();
-    nav {
-      ul {
-        display: block;
-      }
-    }
-  }
+ 
   header {
     width: 100%;
     height: 40vh;
@@ -44,27 +37,33 @@ body {
       justify-content: space-between;
       align-items: center;
       position: relative;
-
+      .menu-btn{
+        display: block;
+        cursor: pointer;
+            .icon-close{
+                display: none;
+            }
+            .hamburguer-btn{
+                display: block;
+            }
+        }
       ul {
-        width: 100%;
-        background-color: white;
-        position: absolute;
-        list-style-type: none;
-        top: 4.5rem;
-        border-radius: 1rem;
         display: none;
-
+        list-style-type: none;
         li {
-          padding: 1.7rem 1.5rem;
           font-size: 1.4rem;
           font-weight: 700;
-          &.center-item-menu {
-            border-top: 1px solid var(--Border_gray);
-            border-bottom: 1px solid var(--Border_gray);
-          }
+          cursor: pointer;
+
+          &:hover{
+            a{
+                color: var(--Moderate_cyan);
+            }
+            }
           a {
             color: var(--Black);
             text-decoration: none;
+            transition: .2s ease color;
           }
         }
       }
@@ -82,6 +81,11 @@ body {
       background-color: var(--Moderate_cyan);
       color: white;
       font-weight: 500;
+      cursor: pointer;
+      transition: 0.5s ease background;
+      &:hover {
+        background-color: var(--Dark_cyan);
+      }
     }
     .container {
       width: 90vw;
@@ -129,8 +133,27 @@ body {
             display: flex;
             align-items: center;
             position: relative;
-            img {
+            cursor: pointer;
+            svg {
               z-index: 5;
+            }
+            &.bookmarked {
+              svg {
+                z-index: 5;
+                circle {
+                  fill: var(--Dark_cyan);
+                }
+                path {
+                  fill: white;
+                }
+              }
+              .bookmark-text{
+                  color: var(--Dark_cyan);
+                  background-color: #f4f8f9;
+                  &::after{
+                    content: 'Bookmarked';
+                }
+              }
             }
             .bookmark-text {
               padding: 1rem 3rem;
@@ -142,6 +165,10 @@ body {
               z-index: 1;
               position: relative;
               left: -1.8rem;
+              font-weight: 700;
+              &::after{
+                  content: 'Bookmark';
+              }
             }
           }
         }
@@ -226,6 +253,12 @@ body {
           &.disabled {
             opacity: 0.6;
             filter: brightness(0.8);
+
+
+            button{
+                cursor: auto;
+                background-color: var(--Dark_gray);
+            }
           }
           .header-card {
             display: grid;
@@ -237,29 +270,63 @@ body {
               color: var(--Moderate_cyan);
             }
           }
-          .footer-card{
-              display: flex; 
-              flex-direction: column;
-              gap: 2.8rem;
+          .footer-card {
+            display: flex;
+            flex-direction: column;
+            gap: 2.8rem;
             h4 {
-                font-size: 2.6rem;
-    
-                span {
-                  font-size: 1.4rem;
-                  color: var(--Dark_gray);
-                }
+              font-size: 2.6rem;
+
+              span {
+                font-size: 1.4rem;
+                color: var(--Dark_gray);
               }
+            }
           }
-          
         }
       }
     }
   }
 }
-
-@media (min-width: 769px) {
+@media(max-width: 819px){
+    body.activeUl {
+        main, .logo{
+            transition: .4s filter;
+            filter: brightness(.5);
+        }
+        nav {
+            .menu-btn{
+                    .icon-close{
+                        display: block;
+                    }
+                    .hamburguer-btn{
+                        display: none;
+                    }
+                }
+            ul {
+                width: 100%;
+                background-color: white;
+                position: absolute;
+    
+                top: 4.5rem;
+                border-radius: 1rem;
+                display: block;
+                z-index: 999;
+                box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+                li {
+                  padding: 2rem 1.5rem;
+                  &.center-item-menu {
+                    border-top: 1px solid var(--Border_gray);
+                    border-bottom: 1px solid var(--Border_gray);
+                  }
+                }
+              }
+        }
+      }
+}
+@media (min-width: 820px) {
   html {
-    font-size: 80%;
+    font-size: 60%;
   }
   body main .container {
     width: 45vw !important;
@@ -270,6 +337,25 @@ body {
   body header {
     background-image: url(../images/image-hero-desktop.jpg);
   }
+  body header nav {
+      padding: 2rem 6rem;
+  }
+  body header nav .menu-btn {
+    display: none;
+}
+
+  body header nav ul {
+    display: block;
+    display: flex;
+    gap: 2rem;
+    li{
+        cursor: auto;
+        a{
+            color: white;
+        }
+    }
+    
+}
   body
     main
     .container
@@ -280,17 +366,30 @@ body {
     display: flex;
   }
   body main .container .values-project-area ul {
-      display: flex;
+    display: flex;
+    justify-self: left;
+
+    &:last-child{
+        margin-left: 5rem;
+    }
   }
 
   body main .container .values-project-area ul .diviser {
-      width: 1px;
-      height: 50%;
+    width: 1px;
+    margin-left: 5rem;
+    height: 50%;
+
+    &.firt{
+        margin-left: 1rem;
+    }
   }
-  .footer-card{
-      width: 100%;
-      justify-content: space-between;
-      flex-direction: row !important;
+  .footer-card {
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: row !important;
+  }
+  body main .container .about-project-area .card-about {
+    min-height: 225px;
   }
 }
 

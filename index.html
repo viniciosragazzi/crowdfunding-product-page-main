@@ -31,7 +31,7 @@
     <nav class="menu">
       <img src="./images/logo.svg" alt="Logo do website Crowdfund" class="logo">
 
-      <i class="hamburguer-menu"><img src="/images/icon-hamburger.svg" alt="Icon haburguer"></i>
+      <i class="menu-btn"><img src="/images/icon-hamburger.svg" class="hamburguer-btn" alt="Icon haburguer"> <img src="/images/icon-close-menu.svg" class="icon-close" alt="Icon Close"></i>
 
       <ul class="navbar">
         <li class="navitem">
@@ -59,8 +59,12 @@
         </div>
         <div class="title-project-footer">
           <button class="backProject">Back this project</button>
-          <span class="bookmark"><img src="images/icon-bookmark.svg" alt="bookmark icon"> <span
-              class="bookmark-text">Bookmark</span></span>
+          <span class="bookmark bookmarked"><svg width="56" height="56" xmlns="http://www.w3.org/2000/svg">
+              <g fill="none" fill-rule="evenodd">
+                <circle fill="#2F2F2F" cx="28" cy="28" r="28" />
+                <path fill="#B1B1B1" d="M23 19v18l5-5.058L33 37V19z" />
+              </g>
+            </svg> <span class="bookmark-text"></span></span>
         </div>
       </div>
       <div class="values-project-area box-main">
@@ -69,7 +73,7 @@
             <h2 class="value">$89,914</h2>
             <span class="subtitle">of $100,000 backed</span>
           </li>
-          <div class="diviser"></div>
+          <div class="diviser firt"></div>
           <li class="total-backed">
             <h2 class="value">5,007</h2>
             <span class="subtitle">total backers</span>
@@ -109,10 +113,10 @@
             you’ll be added to a special Backer member list.
           </p>
           <div class="footer-card">
-          <h4 class="value-card">101 <span>left</span></h4>
-          <button>
-            Select Reward
-          </button>
+            <h4 class="value-card">101 <span>left</span></h4>
+            <button>
+              Select Reward
+            </button>
           </div>
         </div>
 
@@ -127,9 +131,9 @@
           </p>
           <div class="footer-card">
             <h4 class="value-card">64 <span>left</span></h4>
-          <button>
-            Select Reward
-          </button>
+            <button>
+              Select Reward
+            </button>
           </div>
         </div>
 
@@ -139,14 +143,14 @@
             <p class="subtitle-card">Pledge $200 or more</p>
           </div>
           <p class="desc-card subtitle">
-            You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added 
+            You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added
             to our Backer member list. Shipping is included.
           </p>
           <div class="footer-card">
-          <h4 class="value-card">0 <span>left</span></h4>
-          <button disabled>
-            Out of Stock
-          </button>
+            <h4 class="value-card">0 <span>left</span></h4>
+            <button disabled>
+              Out of Stock
+            </button>
           </div>
         </div>
 
@@ -154,6 +158,8 @@
       </div>
     </div>
   </main>
+
+  <script src="script/main.js"></script>
 </body>
 
 </html>
