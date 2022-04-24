@@ -1,0 +1,301 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --Moderate_cyan: hsl(176, 50%, 47%);
+  --Dark_cyan: hsl(176, 72%, 28%);
+  --Black: hsl(0, 0%, 0%);
+  --Dark_gray: hsl(0, 0%, 48%);
+  --Border_gray: hsl(0deg 0% 48% / 28%);
+  --GrayBar: hsl(0deg 0% 48% / 25%);
+}
+
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: "Commissioner", sans-serif;
+
+  .subtitle {
+    color: var(--Dark_gray);
+  }
+  &.activeUl {
+    filter: brightness();
+    nav {
+      ul {
+        display: block;
+      }
+    }
+  }
+  header {
+    width: 100%;
+    height: 40vh;
+    padding: 1.5rem;
+    background-image: url("../images/image-hero-mobile.jpg");
+    background-size: cover;
+    background-position: top;
+    display: grid;
+    align-items: flex-start;
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+
+      ul {
+        width: 100%;
+        background-color: white;
+        position: absolute;
+        list-style-type: none;
+        top: 4.5rem;
+        border-radius: 1rem;
+        display: none;
+
+        li {
+          padding: 1.7rem 1.5rem;
+          font-size: 1.4rem;
+          font-weight: 700;
+          &.center-item-menu {
+            border-top: 1px solid var(--Border_gray);
+            border-bottom: 1px solid var(--Border_gray);
+          }
+          a {
+            color: var(--Black);
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+  main {
+    width: 100%;
+    display: grid;
+    position: relative;
+    background: rgb(255, 255, 255);
+    button {
+      border: none;
+      padding: 1.4rem 3rem;
+      border-radius: 2rem;
+      background-color: var(--Moderate_cyan);
+      color: white;
+      font-weight: 500;
+    }
+    .container {
+      width: 90vw;
+      display: grid;
+      margin: 0 auto;
+      position: relative;
+      top: -5rem;
+      gap: 4rem;
+      .box-main {
+        display: grid;
+        padding: 1rem 3rem;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      }
+      .title-project-area {
+        width: 100%;
+        background-color: white;
+        justify-items: center;
+        text-align: center;
+
+        border-radius: 8px;
+
+        img.logo-projeto {
+          position: relative;
+          top: -4rem;
+        }
+
+        .project-desc {
+          display: grid;
+          gap: 2rem;
+
+          .subtitle {
+            font-weight: 500;
+            font-size: 1.2rem;
+          }
+        }
+
+        .title-project-footer {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          margin: 2rem 0;
+          gap: 1rem;
+          .bookmark {
+            display: flex;
+            align-items: center;
+            position: relative;
+            img {
+              z-index: 5;
+            }
+            .bookmark-text {
+              padding: 1rem 3rem;
+              display: none;
+              background-color: var(--Border_gray);
+              border-radius: 2rem;
+              left: 4rem;
+              font-weight: 500;
+              z-index: 1;
+              position: relative;
+              left: -1.8rem;
+            }
+          }
+        }
+      }
+      .values-project-area {
+        text-align: center;
+        ul {
+          display: grid;
+          justify-content: center;
+          align-items: center;
+          list-style-type: none;
+          gap: 2rem;
+          .diviser {
+            width: 50%;
+            background-color: rgba(0, 0, 0, 0.195);
+            height: 1px;
+            margin: 0 auto;
+          }
+          li {
+            display: grid;
+            gap: 1rem;
+            padding: 1.5rem 0;
+
+            h2 {
+              font-size: 3rem;
+            }
+            span {
+              font-size: 1.3rem;
+              font-weight: 500;
+            }
+          }
+        }
+        .backed-bar-progress {
+          width: 100%;
+          padding: 1.3rem 0;
+          .bar {
+            width: 100%;
+            height: 1rem;
+            background-color: var(--GrayBar);
+            margin: 0 auto;
+            border-radius: 2rem;
+            position: relative;
+            overflow: hidden;
+            &::after {
+              content: "";
+              width: 80%;
+              height: 100%;
+              background: var(--Moderate_cyan);
+              position: absolute;
+              left: 0;
+            }
+          }
+        }
+      }
+      .about-project-area {
+        display: grid;
+        gap: 2.5rem;
+        h3,
+        p {
+          font-size: 1.3rem;
+        }
+        .text-about {
+          display: grid;
+          gap: 2rem;
+          line-height: 2rem;
+          h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+          }
+        }
+        .card-about {
+          width: 100%;
+          min-height: 320px;
+          border-radius: 0.6rem;
+          padding: 1.6rem 1.8rem;
+          display: flex;
+          flex-direction: column;
+          align-items: start;
+          gap: 2.8rem;
+          border: 1px solid hsl(0deg 0% 33% / 9%);
+
+          &.disabled {
+            opacity: 0.6;
+            filter: brightness(0.8);
+          }
+          .header-card {
+            display: grid;
+            gap: 0.8rem;
+            h3 {
+              font-weight: 700;
+            }
+            p {
+              color: var(--Moderate_cyan);
+            }
+          }
+          .footer-card{
+              display: flex; 
+              flex-direction: column;
+              gap: 2.8rem;
+            h4 {
+                font-size: 2.6rem;
+    
+                span {
+                  font-size: 1.4rem;
+                  color: var(--Dark_gray);
+                }
+              }
+          }
+          
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 769px) {
+  html {
+    font-size: 80%;
+  }
+  body main .container {
+    width: 45vw !important;
+  }
+  body main .container .title-project-area .title-project-footer {
+    justify-content: space-between;
+  }
+  body header {
+    background-image: url(../images/image-hero-desktop.jpg);
+  }
+  body
+    main
+    .container
+    .title-project-area
+    .title-project-footer
+    .bookmark
+    .bookmark-text {
+    display: flex;
+  }
+  body main .container .values-project-area ul {
+      display: flex;
+  }
+
+  body main .container .values-project-area ul .diviser {
+      width: 1px;
+      height: 50%;
+  }
+  .footer-card{
+      width: 100%;
+      justify-content: space-between;
+      flex-direction: row !important;
+  }
+}
+
+@media (min-width: 425px) {
+  body main .container {
+    width: 80vw;
+  }
+}
