@@ -532,6 +532,7 @@ body {
       }
     }
   }
+
   body
     main
     .container
@@ -588,5 +589,12 @@ body {
 @media (min-width: 425px) {
   body main .container {
     width: 80vw;
+  }
+}
+
+@media (max-width: 325px) {
+  body section.modalList {
+    width: 302px;
+    padding: 10px;
   }
 }

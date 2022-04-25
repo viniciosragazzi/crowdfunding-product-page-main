@@ -560,4 +560,10 @@ body.activeUl .logo {
   body main .container {
     width: 80vw;
   }
+}
+@media (max-width: 325px) {
+  body section.modalList {
+    width: 302px;
+    padding: 10px;
+  }
 }/*# sourceMappingURL=style.css.map */
