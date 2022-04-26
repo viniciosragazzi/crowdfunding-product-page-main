@@ -35,6 +35,15 @@ body {
       background-color: var(--Dark_cyan);
     }
   }
+  .disabled {
+    opacity: 0.6;
+    filter: brightness(0.8);
+    cursor: auto !important;
+    button {
+      cursor: auto;
+      background-color: var(--Dark_gray);
+    }
+  }
   header {
     width: 100%;
     height: 40vh;
@@ -253,15 +262,7 @@ body {
           gap: 2.8rem;
           border: 1px solid hsl(0deg 0% 33% / 9%);
 
-          &.disabled {
-            opacity: 0.6;
-            filter: brightness(0.8);
-
-            button {
-              cursor: auto;
-              background-color: var(--Dark_gray);
-            }
-          }
+  
           .header-card {
             display: grid;
             gap: 0.8rem;
@@ -289,31 +290,49 @@ body {
       }
     }
   }
-  &.open-modal{
-    section.modalList{
+  &.open-modal-rewads {
+    section.modalList {
       display: block;
     }
-    header, main{
 
-      filter: brightness(0.5)
+    header,
+    main {
+      filter: brightness(0.5);
+    }
+  }
+  &.open-modal-sucess {
+    section.modalSucess {
+      display: block;
     }
 
+    header,
+    main {
+      filter: brightness(0.5);
+    }
   }
+
   section {
     &.modals {
       position: absolute;
       z-index: 999;
       background-color: rgb(255, 255, 255);
-      top: 6vh;
+
       border-radius: 1rem;
       justify-self: center;
       box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
       padding: 2rem 2.5rem;
+
+      .close-modal {
+        position: absolute;
+        right: 0;
+        cursor: pointer;
+      }
     }
     &.modalList {
       width: 360px;
       min-height: 460px;
       display: none;
+      top: 6vh;
       .container {
         padding-bottom: 2rem;
         .header-modal-list {
@@ -324,11 +343,7 @@ body {
           h2 {
             font-size: 1.6rem;
             font-weight: 700;
-          }
-          .close-modal {
-            position: absolute;
-            right: 0;
-            cursor: pointer;
+
           }
         }
         .cards-modal-list {
@@ -340,14 +355,15 @@ body {
             border-radius: 1rem;
             overflow: hidden;
             height: 10rem;
-            transition: .4s ease height;
+            transition: 0.4s ease height;
             cursor: pointer;
-            &.card-modal-open{
+            &.card-modal-open {
               height: 19rem;
-              .check-circle{
+              border: 2px solid var(--Moderate_cyan);
+              .check-circle {
                 position: relative;
-                &::after{
-                  content: '';
+                &::after {
+                  content: "";
                   position: absolute;
                   width: 1rem;
                   height: 1rem;
@@ -356,11 +372,26 @@ body {
                   transform: translateY(-50%) translateX(-48%);
                   background-color: var(--Moderate_cyan);
                   border-radius: 50%;
-
                 }
               }
-              .footer-card-modal{
+              .footer-card-modal {
                 border-top: 1px solid var(--GrayBar);
+              }
+            }
+            &.card-modal-select {
+              .check-circle {
+                position: relative;
+                &::after {
+                  content: "";
+                  position: absolute;
+                  width: 1rem;
+                  height: 1rem;
+                  left: 50%;
+                  top: 50%;
+                  transform: translateY(-50%) translateX(-48%);
+                  background-color: var(--Moderate_cyan);
+                  border-radius: 50%;
+                }
               }
             }
             .container {
@@ -370,6 +401,10 @@ body {
               h2 {
                 font-size: 1rem;
                 color: var(--Moderate_cyan);
+
+                &.title-card-modal{
+                  color: black;
+                }
               }
               .header-card-modal {
                 display: flex;
@@ -405,15 +440,14 @@ body {
                 padding-left: 3rem;
                 padding-bottom: 1rem;
               }
-              
             }
             .footer-card-modal {
               display: flex;
               justify-content: space-between;
               align-items: center;
               padding: 2rem 1rem;
-              
-            .footer-card-modal-right {
+
+              .footer-card-modal-right {
                 display: flex;
                 align-items: center;
                 gap: 1rem;
@@ -457,9 +491,78 @@ body {
         }
       }
     }
+    &.modalSucess {
+      position: fixed;
+      width: 380px;
+      min-height: 320px;
+      display: none;
+      top: 50%;
+      transform: translateY(-50%);
+      .container {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        justify-items: center;
+        text-align: center;
+        gap: 4rem;
+        svg {
+          path {
+            stroke-dasharray: 43;
+            stroke-dashoffset: 43;
+            animation: animate-v 1s ease forwards;
+            animation-delay: .5s;
+          }
+          circle{
+            opacity: 0;
+            animation: show-circle 2s ease-out forwards;
+          }
+        }
+        .text {
+          display: grid;
+          opacity: 0;
+          gap: 1rem;
+          animation: show-circle .5s ease-out forwards;
+          animation-delay: .5s;
+          h1 {
+            font-size: 1.7rem;
+            font-weight: 700;
+          }
+          p {
+            font-size: 1.2rem;
+            line-height: 2.2rem;
+          }
+        }
+        button {
+          font-size: 1.2rem;
+          margin-top: 2rem;
+          opacity: 0;
+          animation: show-circle .5s ease-out forwards;
+          animation-delay: 1s;
+        }
+      }
+    }
   }
-
 }
+@keyframes show-circle {
+  0% {
+  opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+@keyframes animate-v {
+  0% {
+    stroke-dasharray: 43;
+    stroke-dashoffset: 43;
+  }
+  100%{
+    stroke-dasharray: 43;
+    stroke-dashoffset: 0;
+  }
+}
+
 @media (max-width: 819px) {
   body.activeUl {
     main,
@@ -499,7 +602,10 @@ body {
   body section.modalList .container .cards-modal-list .card-modal {
     height: 11.5rem;
   }
-  
+  body.open-modal-sucess section.modalSucess {
+    top: 5rem;
+    transform: translateY(0);
+  }
 }
 @media (min-width: 820px) {
   html {
@@ -581,9 +687,13 @@ body {
     width: 460px;
   }
 
-  body section.modalList .container .cards-modal-list .card-modal.card-modal-open {
+  body
+    section.modalList
+    .container
+    .cards-modal-list
+    .card-modal.card-modal-open {
     height: 16rem;
-}
+  }
 }
 
 @media (min-width: 425px) {
