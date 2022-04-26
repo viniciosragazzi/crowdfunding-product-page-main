@@ -703,7 +703,7 @@ body {
 }
 
 @media (max-width: 325px) {
-  body section.modalList {
+  body section.modalList ,   body section.modalSucess{
     width: 302px;
     padding: 10px;
   }
